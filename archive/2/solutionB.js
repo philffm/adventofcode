@@ -1,5 +1,6 @@
 var stringArray;
 var pwCount = 0;
+var pwCount2 = 0;
 
 
 function loadArrayFromExt(fileName){
@@ -33,6 +34,14 @@ const checkOccurance = (theString, theSubst) => {
 
 }
 
+const checkPattern = (theString, theSubst, lowVal, hiVal) => {
+
+    stringArray[1].split(": ")[1].split("").length
+
+    return theString.split(theSubst).length - 1;
+
+}
+
 function findPass(theString){
     for (i = 0; i < stringArray.length; i++){
 
@@ -47,13 +56,29 @@ function findPass(theString){
         let hiVal = theString[i].split(" ")[0].split('-')[1];
         
         let letterOccurance = checkOccurance(pw,letter);
+        let pwSplit = pw.split("");
+        let pwLength = pw.split("").length-1;
+        let posCount=0;
+        for(pos = 0; pos < pwLength; pos++){
+            
+            if((lowVal-1) == pos || (hiVal-1) == pos){
+                if(posCount>0){
+                    pwCount2--;
+                }else if(pwSplit[pos]==letter){
+                    posCount++;
+                    pwCount2++;
+                }
+            }
+
+
+        }
         
         if(letterOccurance<=hiVal && letterOccurance>=lowVal){
             pwCount++;
-            console.log('JAWOLL!');
+            console.log('JAWOLL JUNGE!');
         }
     
-        if(i == (stringArray.length-1){
+        if(i == (stringArray.length-2)){
             afterForloop();
         }
         console.log( pw+' '+lowVal+' '+hiVal+' '+letter);
@@ -64,10 +89,10 @@ function findPass(theString){
 
 
 function afterForloop(){
-    console.log(pwCount + " valid Passwords 👯‍♀️");
+    console.log(pwCount + " valid Passwords 👯‍♀️ Pattern A");
+    console.log(pwCount2 + " valid Passwords 👯‍♀️ Pattern B");
 }
 
 
-console.log(checkOccurance("Ballern","l"));
 
 
