@@ -1112,7 +1112,6 @@ var passCount;
 
 var part1 = validatePassportRequiredFields(input);
 var part2 = validateAllPassports(input);
-
 console.log( ' 1️⃣ ' + part1 + ' 2️⃣ ' + part2 );
 // var passports = splitIntoSubArray(passportFragments).filter(value => Object.keys(value).length !== 0);
 
